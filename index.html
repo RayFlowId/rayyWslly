@@ -1,0 +1,307 @@
+PORTOFOLIO HTML
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio KAIZEL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+        
+        /* Efek Partikel Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100vw); opacity: 0; }
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -2;
+        }
+        .background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(40%) blur(3px);
+        }
+        .container {
+            position: relative;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            animation: fadeIn 1.5s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 320px; /* Fixed width */
+        }
+        
+        /* Glow effect pada container */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6e7f, #00d4ff);
+            border-radius: 22px;
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0.5;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #00d4ff, #ff6e7f);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: 600;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+        p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+            line-height: 1.6;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 15px;
+            animation: profile-bounce 2s infinite;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+        
+        /* Hover effect pada gambar profil */
+        .profile-img:hover {
+            transform: scale(1.05);
+            border-color: #00d4ff;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes profile-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+                .button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 50px;
+            font-size: 14px;
+            color: white;
+            background: rgba(0, 212, 255, 0.7); /* Warna tunggal */
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+            background: rgba(0, 212, 255, 0.9); /* Warna hover yang lebih pekat */
+        }
+
+        /* Dark mode styles yang diperbaiki */
+        body.dark {
+            background: #111;
+        }
+        
+        .container.dark {
+            background: rgba(20, 20, 20, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .button.dark {
+            background: rgba(40, 40, 40, 0.9);
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .button.dark:hover {
+            background: rgba(60, 60, 60, 0.9);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .container.dark::before {
+            opacity: 0.2;
+        }
+
+        /* Toggle button styles yang diperbaiki */
+        .toggle-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.7);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+        }
+        
+        .toggle-button:hover {
+            transform: rotate(180deg) scale(1.1);
+            background: rgba(0, 212, 255, 0.9);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="background">
+        <video autoplay muted loop>
+            <source src="https://widipe.com/file/kKUtYfRXKfsN.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+    
+    <div class="container">
+        <img src="https://widipe.com/file/tDfK1dw5cUdC.jpg" alt="Profil Saya" class="profile-img">
+        <h1>kaizel</h1>
+        <p>Web Developer | UX/UI Designer | Content Creator</p>
+        
+        <div class="button-group">
+            <a href="https://yourwebsite.com" target="_blank" class="button">
+                <i class="fas fa-globe"></i>
+                <span>Website Saya</span>
+            </a>
+            
+            <a href="https://youtube.com/channel/rayflowid" target="_blank" class="button">
+                <i class="fab fa-youtube"></i>
+                <span>YouTube Saya</span>
+            </a>
+            <a href="tel:+6285718517738" class="button">
+                <i class="fas fa-comments"></i>
+                <span>Hubungi Saya</span>
+            </a>
+            <a href="https://github.com/Rayflowid" target="_blank" class="button">
+                <i class="fab fa-github"></i>
+                <span>GitHub Saya</span>
+            </a>
+        </div>
+    </div>
+
+    <button id="toggleDarkMode" class="toggle-button">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <script>
+        // Dark mode toggle
+        const toggleDarkMode = () => {
+            document.body.classList.toggle('dark');
+            const container = document.querySelector('.container');
+            container.classList.toggle('dark');
+            const buttons = document.querySelectorAll('.button');
+            buttons.forEach(button => button.classList.toggle('dark'));
+
+            const icon = document.getElementById('toggleDarkMode').querySelector('i');
+            icon.classList.toggle('fa-sun');
+            icon.classList.toggle('fa-moon');
+        };
+
+        document.getElementById('toggleDarkMode').addEventListener('click', toggleDarkMode);
+
+        // Particle effect
+        const createParticles = () => {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30; // Reduced particle count
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random position
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                
+                // Random animation delay
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        };
+// By Rayy FlowId
+        // Initialize particles
+        createParticles();
+    </script>
+</body>
+  </html>
